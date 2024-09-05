@@ -1,18 +1,20 @@
-// Importando o framework e inicializando
 import Fastify from 'fastify'
+import dbConnector from './database/database.js'
 import statusRoute from './routers/status.js'
+import userRoute from './routers/user.js'
 
 const fastify = Fastify({
-    logger: true
+    logger: false
 })
 
-// Definindo as rotas do projeto
+fastify.register(dbConnector)
 fastify.register(statusRoute)
+fastify.register(userRoute)
 
-// Executando o servidor
-try {
-    await fastify.listen({ port: 3000, host: '0.0.0.0' })
-} catch(err) {
-    fastify.log.error(err);
-    process.exit(1);
-}
+fastify.listen({ port: 3000, host: '0.0.0.0'}, function(err, address) {
+    if(err) {
+        fastify.log.error(err)
+        process.exit(1)
+    }
+    fastify.log.info(`Server listening on ${address}`)
+})
