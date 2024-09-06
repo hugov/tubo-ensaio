@@ -4,11 +4,9 @@ async function routes(fastify, options) {
 
     // List all
     fastify.get('/user', async (request, reply) => {
-        console.log(`Consultando o usuário id: ${request.params.id}`)
-
         try {
             const { rows } = await client.query('SELECT id, name, email, status FROM users ORDER BY name')
-            return rows
+            reply.status(200).send(rows)
         } catch(error) {
             console.log(`Falha ao consultar o usuário ${request.params.id}`)
         }
@@ -16,28 +14,20 @@ async function routes(fastify, options) {
 
     // Create
     fastify.post('/user', (request, reply) => {
-
         const { name, email, status } = request.body
+        console.log(request.body)
         console.log('Adicionando o usuário de email:', email)
 
-        const { rows } = client.query('INSERT INTO users (name, email, status) VALUES($1, $2, $3) RETURNING *', [name, email, status])
-
-        reply.send(`User added with ID: ${rows.id}`)
-
-
-        /*
+        client.query('INSERT INTO users (name, email, status) VALUES($1, $2, $3)', [name, email, status],
         (error, result) => {
             if(error) {
-                throw error;
+                throw error
             }
 
-            const { id } = result.rows[0]
-            console.log('Novo usuário de id: ', id)
+            console.log('Passando aqui !!!')
 
-            reply.send(`User added with ID: ${id}`)
+            reply.status(200).send(`Registration ${request.params.id} changed successfully`)
         })
-        */
-        
     })
 
     // Retrieve
@@ -60,7 +50,7 @@ async function routes(fastify, options) {
         client.query('UPDATE users SET name = $1 , email = $2 , status = $3 WHERE id = $4', [name, email, status, request.params.id],
         (error, result) => {
             if(error) {
-                throw error;
+                reply.send(error);
             }
 
             reply.send(`Registration ${request.params.id} changed successfully`)
@@ -78,7 +68,6 @@ async function routes(fastify, options) {
 
             reply.send(`Record ${request.params.id} deleted successfully`)
         })
-
     })
 
 }
