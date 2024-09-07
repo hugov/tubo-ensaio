@@ -35,6 +35,8 @@ A lista de endpoints completa está descrita aqui:
 
 ## Aplicação Web
 
+### Funcionalidade: Cadastro de usuário 
+
 Funcionalidade: Tela inicial da aplicação (Tabela de usuário sem informação)
 
 ![Tubo de ensaio!](./static/assets/img_01.png "Tubo de ensaio")
