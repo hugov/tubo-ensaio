@@ -2,8 +2,8 @@ import Fastify from 'fastify'
 import cors from '@fastify/cors'
 
 import dbConnector from './database/database.js'
-import statusRoute from './routers/status.js'
-import userRoute from './routers/user.js'
+import statusRoute from './routes/status.js'
+import userRoute from './routes/user.js'
 
 const fastify = Fastify({
     logger: false

@@ -42,12 +42,7 @@ function closeModal(screen) {
 }
 
 async function openModal(screen, id) {
-    let modal = null;
-    if(screen == 0) {
-        modal = document.getElementById('confirmDeleteModal');
-    } else if(screen > 0) {
-        modal = document.getElementById('formModal');
-    }
+    let modal = document.getElementById(screen == 0 ? 'confirmDeleteModal' : 'formModal' );
 
     modal.setAttribute('open', '');
     modal.setAttribute('data-id', id);
@@ -72,6 +67,7 @@ async function openModal(screen, id) {
     else if(screen === 2) {
         let form = document.getElementById('updateForm');
         form['formType'].value = 2;
+        form.reset();
     }
 
     // Tela de alteração
@@ -113,7 +109,7 @@ function renderTable(data) {
 }
 
 async function onSubmitInsertAndUpdate() {
-    let modal = document.getElementById('updateScreenModal');
+    let modal = document.getElementById('formModal');
     let form = document.getElementById('updateForm');
 
     id = modal.getAttribute('data-id');
@@ -132,7 +128,7 @@ async function onSubmitInsertAndUpdate() {
         });
     } else if(data.formType == 3) {
         response = await fetch(URL_API_SERVICE_USER + '/' + id, {
-            method: 'PATCH',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
