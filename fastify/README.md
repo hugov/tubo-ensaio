@@ -1,8 +1,5 @@
-![Tubo de ensaio!](./static/img/tubo-ensaio.png "Tubo de ensaio")
-
 <figure>
-    <img src="./static/img/tubo-ensaio.png" alt="CRUD com API Fastify">
-    <figcaption>Uma aplicação CRUD com serviçoes em Rest com API Fastify.</figcaption>
+    <img src="./static/img/tubo-ensaio.png" alt="CRUD com API Fastify" width="256" height="256">
 </figure>
 
 # Tubo de ensaio - CRUD com API Fastify
