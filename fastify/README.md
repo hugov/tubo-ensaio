@@ -37,27 +37,27 @@ A lista de endpoints completa está descrita aqui:
 
 Funcionalidade: Tela inicial da aplicação (Tabela de usuário sem informação)
 
-![Tubo de ensaio!](/static/assets/img_01.png "Tubo de ensaio")
+![Tubo de ensaio!](./static/assets/img_01.png "Tubo de ensaio")
 
 Funcionalidade: Listagem de usuário
 
-![Tubo de ensaio!](/static/assets/img_02.png "Tubo de ensaio")
+![Tubo de ensaio!](./static/assets/img_02.png "Tubo de ensaio")
 
 Funcionalidade: Consulta de usuário.
 
-![Tubo de ensaio!](/static/assets/img_03.png "Tubo de ensaio")
+![Tubo de ensaio!](./static/assets/img_03.png "Tubo de ensaio")
 
 Funcionalidade: Alteração de usuário.
 
-![Tubo de ensaio!](/static/assets/img_04.png "Tubo de ensaio")
+![Tubo de ensaio!](./static/assets/img_04.png "Tubo de ensaio")
 
 Funcionalidade: Inclusão de usuário.
 
-![Tubo de ensaio!](/static/assets/img_05.png "Tubo de ensaio")
+![Tubo de ensaio!](./static/assets/img_05.png "Tubo de ensaio")
 
 Funcionalidade: Deleção de usuário
 
-![Tubo de ensaio!](/static/assets/img_06.png "Tubo de ensaio")
+![Tubo de ensaio!](./static/assets/img_06.png "Tubo de ensaio")
 
 > Para visualizar a aplicação WEB será necessário da Extensão **Live Server** , após ela estar instalada basta pressionar em cima do arquivo **index.html** e pressionar na opção **Open With Live Server**
 
