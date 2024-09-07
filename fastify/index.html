@@ -1,293 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de usuário</title>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de usuário</title>
 
-    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="static/css/style.css" />
-    <link rel="stylesheet" href="static/css/pico.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
-
-    <script>
-
-        function verifyIfExistsFetch() {
-            if(self.fetch) {
-                console.log("Funcionalidade Fetch habilitada");
-            } else {
-                console.log("Funcionalidade Fetch desabilitada");
-            }
-        }
-
-        async function loadUsers() {
-
-            let response = await fetch('http://localhost:3000/user');
-            console.log(response.status);
-            console.log(response.statusText);
-
-            if(response.status === 200) {
-                let data = await response.text();
-                console.log(JSON.parse(data));
-
-                renderTable(JSON.parse(data));
-            }
-
-        }
-
-        async function retrieveUserById(id) {
-            console.log(`Consultando o usuário ${id}`)
-
-            let response = await fetch(`http://localhost:3000/user/${id}`);
-            console.log(response.status);
-            console.log(response.statusText);
-
-            if(response.status === 200) {
-                let data = await response.text();
-                console.log(data);
-
-                return JSON.parse(data);
-            }
-        }
-
-        function closeModal(screen) {
-            let modal = '';
-            if(screen === 'closeModal-record') {
-                modal = document.getElementById('updateScreenModal');
-            } else {
-                modal = document.querySelector('dialog');
-            }
-
-            modal.removeAttribute('open');
-            modal.removeAttribute('data-id');
-        }
-
-        async function openModal(screen, id) {
-
-            // Tela de confirmação exclusão
-            if(screen === 0) {
-                let modal = document.getElementById('confirmDeleteModal');
-                modal.setAttribute('open', '');
-                modal.setAttribute('data-id', id);
-            }
-
-            // Tela de consulta
-            else if(screen === 1) {
-                let modal = document.getElementById('updateScreenModal');
-                modal.setAttribute('open', '');
-                modal.setAttribute('data-id', id);
-
-                let data = await retrieveUserById(id);
-
-                let form = document.getElementById('updateForm');
-                form['formType'].value = 1;
-                form['name'].value = data[0].name;
-                form['email'].value = data[0].email;
-                //form['status'].value = data[0].status;
-
-                let buttonSubmit = document.getElementById('buttonSubmit');
-                buttonSubmit.hidden = true;
-            }
-
-            // Tela de inclusão
-            else if(screen === 2) {
-                let modal = document.getElementById('updateScreenModal');
-                modal.setAttribute('open', '');
-
-                let form = document.getElementById('updateForm');
-                form['formType'].value = 2;
-            }
-
-            // Tela de alteração
-            else if(screen === 3) {
-                let modal = document.getElementById('updateScreenModal');
-                modal.setAttribute('open', '');
-                modal.setAttribute('data-id', id);
-
-                let data = await retrieveUserById(id);
-
-                let form = document.getElementById('updateForm');
-                form['formType'].value = 3;
-                form['name'].value = data[0].name;
-                form['email'].value = data[0].email;
-
-                let buttonSubmit = document.getElementById('buttonSubmit');
-                buttonSubmit.hidden = false;
-
-            }
-        }
-
-        async function deleteUserById() {
-
-            let modal = document.querySelector('dialog');
-            id = modal.getAttribute('data-id');
-            console.log(`Excluindo o usuário ${id}`);
-
-            let response = await fetch('http://localhost:3000/user/' + id, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            
-            console.log(response.status);
-            console.log(response.statusText);
-
-            if(response.status === 200) {
-                let data = await response.text();
-                console.log(data);
-
-                closeModal();
-                loadUsers();
-            }
-        }
-
-        function renderTable(data) {
-            const tableBody = document.getElementById('userList');
-            tableBody.innerHTML = '';
-
-            data.forEach(user => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${user.id}</td>
-                    <td>${user.name}</td>
-                    <td>${user.email}</td>
-                    <td>${user.status == 1 ? 'Ativo' : 'Inativo'}</td>
-                    <td>
-                        <button title='Consultar' onclick="openModal(1, '${user.id}');" data-tooltip="Consultando os dados do usuário"><i class="fas fa-eye"></i></button>
-                        <button title='Alterar'   onclick="openModal(3, '${user.id}');"   data-tooltip="Alterando os dados do usuário"><i class="fas fa-edit"></i></button>
-                        <button title='Excluir'   onclick="openModal(0, '${user.id}');"   data-tooltip="Excluindo os dados do usuário"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                `;
-                tableBody.appendChild(row);
-            });
-        }
-
-        async function onSubmitUpdate() {
-
-            let modal = document.getElementById('updateScreenModal');
-            let form = document.getElementById('updateForm');
-            let formType = parseInt(form['formType'].value);
-
-            id = modal.getAttribute('data-id');
-
-            let data = {
-                'name' : form[1].value,
-                'email' : form[2].value,
-                'status' : parseInt(form[3].value)
-            }
-
-            var response;
-            if(formType === 2) {
-                response = await fetch('http://localhost:3000/user', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-            } else if(formType === 3) {
-                response = await fetch('http://localhost:3000/user/' + id, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-            }
-            
-            console.log(response.status);
-            console.log(response.statusText);
-
-            if(response.status === 200) {
-                let data = await response.text();
-                console.log(data);
-
-                modal.removeAttribute('open');
-                modal.removeAttribute('data-id');
-
-                loadUsers();
-
-                form.reset();
-            }
-        }
-
-        loadUsers();
-
-    </script>
-</head>
-<body>
-
-    <main class="container">
-        
-        <div class="logo">
-            <img src="static/img/tubo-ensaio.png" width="128" height="128" alt="Laboratório (Tubo de ensaio)" />
-            <br>
-            <br>
-            <h1>Laboratório #0001 - CRUD com Fastify</h1>
-        </div>
-
-        <br>
-
-        <button onclick="openModal(2, '');" style="float: right;">Adicionar usuário</button>
-        <br>
-        <br>
-
-        <table>
-            <thead>
-                <th>id</th>
-                <th>Nome</th>
-                <th>E-mail</th>
-                <th>Situação</th>
-                <th></th>
-            </thead>
-            <tbody id="userList"></tbody>
-        </table>
-
-    </main>
-
-    <dialog id="confirmDeleteModal">
-        <article id="confirmDelete">
-            <h2>Confirmação de exclusão</h2>
-            <p>
-                Deseja remover o usuário selecionado ?
-            </p>
-            <footer>
-                <button onclick="closeModal()" class="secondary">Cancelar</button>
-                <button onclick="deleteUserById()">Confirmar</button>
-            </footer>
-        </article>
-    </dialog>
-
-    <dialog id="updateScreenModal">
-        <article id="updateScreen">
-            <header>
-                <p>
-                  <strong>Cadastro de usuário</strong>
-                </p>
-            </header>
-            <form id="updateForm">
-                <input type="hidden" name="formType" value="">
-                <input type="text" name="name" placeholder="Informe seu nome" aria-label="Text" value="Mariana Costa">
-                <input type="email" name="email" placeholder="Informe seu e-mail" aria-label="Email" autocomplete="email" value="mariana@gmail.com">
-
-                <select name="favorite-cuisine" aria-label="Situação do cadastro ..." required>
-                    <option selected disabled value="">
-                      Selecione a situação do cadastro ...
-                    </option>
-                    <option value="1" selected>Ativo</option>
-                    <option value="0">Inativo</option>
-                  </select>
-
-            </form>
-            <footer>
-                <button onclick="closeModal('closeModal-record')" class="secondary">Cancelar</button>
-                <button onclick="onSubmitUpdate()" id="buttonSubmit">Confirmar</button>
-            </footer>
-        </article>
-    </dialog>
+        <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="static/css/style.css" />
+        <link rel="stylesheet" href="static/css/pico.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+        <script src="static/js/app.js"></script>
+    </head>
     
-</body>
+    <body>
+        <main class="container">
+            
+            <div class="logo">
+                <img src="static/img/tubo-ensaio.png" width="128" height="128" alt="Laboratório (Tubo de ensaio)" />
+                <br>
+                <br>
+                <h1>Laboratório #0001 - CRUD com Fastify</h1>
+            </div>
+
+            <br>
+
+            <button onclick="openModal(2, '');" style="float: right;">Adicionar usuário</button>
+            <br>
+            <br>
+
+            <table>
+                <thead>
+                    <th>id</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Situação</th>
+                    <th></th>
+                </thead>
+                <tbody id="userList"></tbody>
+            </table>
+
+        </main>
+
+        <dialog id="confirmDeleteModal">
+            <article>
+                <h2>Confirmação de exclusão</h2>
+                <p>
+                    Deseja remover o usuário selecionado ?
+                </p>
+                <footer>
+                    <button onclick="closeModal('closeModal-confirm')" class="secondary">Cancelar</button>
+                    <button onclick="deleteUserById()">Confirmar</button>
+                </footer>
+            </article>
+        </dialog>
+
+        <dialog id="formModal">
+            <article>
+                <header>
+                    <p>
+                    <strong>Cadastro de usuário</strong>
+                    </p>
+                </header>
+                <form id="updateForm">
+                    <input type="hidden" name="formType" value="">
+                    <input type="text" name="name" placeholder="Informe seu nome" aria-label="Text" required>
+                    <input type="email" name="email" placeholder="Informe seu e-mail" aria-label="Email" autocomplete="email">
+
+                    <select name="status" id="statusSelect" aria-label="Situação do cadastro ..." required>
+                        <option selected disabled value="">
+                        Selecione a situação do cadastro ...
+                        </option>
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
+                    </select>
+
+                </form>
+                <footer>
+                    <button onclick="closeModal('closeModal-form')" class="secondary">Cancelar</button>
+                    <button onclick="onSubmitInsertAndUpdate()" id="buttonSubmit">Confirmar</button>
+                </footer>
+            </article>
+        </dialog>
+        
+    </body>
 </html>
