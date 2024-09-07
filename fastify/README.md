@@ -1,5 +1,5 @@
 <figure>
-    <img src="./static/img/tubo-ensaio.png" alt="CRUD com API Fastify" width="256" height="256">
+    <img src="./static/img/tubo-ensaio.png" alt="CRUD com API Fastify" width="128" height="128">
 </figure>
 
 # Tubo de ensaio - CRUD com API Fastify
@@ -8,9 +8,9 @@ Esse é o repositório do **CRUD com API Fastify**, criado para entender como fu
 
 ## O que é o Projeto ?
 
-A ideia do projeto foi construir **CRUD com o uso de API Rest com o framework Fastify** e com isso validar um pedaço de uma aplicação prática. Com isso temos uma Proof of Concept (POC ou Prova de Conceito). 
+A ideia do projeto foi construir **CRUD com o uso de API Rest com o framework Fastify** e com isso validar um pedaço de uma aplicação real. Com isso temos uma Proof of Concept Prova de Conceito (POC). 
 
-As seguintes tecnologias foram utilizadas nesta POC:
+Foram utilizadas as seguintes tecnologias:
 * [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 * [Pico CSS](https://picocss.com/) 
 * [Fastify](https://fastify.dev/)
@@ -23,7 +23,43 @@ Os endpoints disponibilizados por este pacote são os necessários para a implem
 A lista de endpoints completa está descrita aqui:
 
 * Status  - Serviço que valida se aplicação está no ar.
-* Usuário - Serviços que apoiam a implementação do CRUD. 
+    * `GET` `/status` : Obtem o status da aplicação
+* Usuário - Serviços que apoiam a implementação do CRUD.
+    * `GET` `/user` : Lista todos os usuários cadastros na aplicação
+    * `GET` `/user/:id` : Obtém o registro do usuário pelo id
+    * `POTS` `/user` : Cria o registro de um usuário
+    * `PUT` `/user/:id` : Atualiza o registro de um usuário
+    * `DELETE` `/user/:id` : Deleta o registro de um usuário pelo id
+
+> Não foram elaboradas nenhuma documentação da API Rest porque foi implementado um protótipo para validar os serviços disponibilizados, com exceção do status.
+
+## Aplicação Web
+
+Funcionalidade: Tela inicial da aplicação (Tabela de usuário sem informação)
+
+![Tubo de ensaio!](/static/assets/img_01.png "Tubo de ensaio")
+
+Funcionalidade: Listagem de usuário
+
+![Tubo de ensaio!](/static/assets/img_02.png "Tubo de ensaio")
+
+Funcionalidade: Consulta de usuário.
+
+![Tubo de ensaio!](/static/assets/img_03.png "Tubo de ensaio")
+
+Funcionalidade: Alteração de usuário.
+
+![Tubo de ensaio!](/static/assets/img_04.png "Tubo de ensaio")
+
+Funcionalidade: Inclusão de usuário.
+
+![Tubo de ensaio!](/static/assets/img_05.png "Tubo de ensaio")
+
+Funcionalidade: Deleção de usuário
+
+![Tubo de ensaio!](/static/assets/img_06.png "Tubo de ensaio")
+
+> Para visualizar a aplicação WEB será necessário da Extensão **Live Server** , após ela estar instalada basta pressionar em cima do arquivo **index.html** e pressionar na opção **Open With Live Server**
 
 # Pré-requisitos
 
@@ -71,8 +107,6 @@ Execute o comando
 ```
 npm start
 ```
-
-
 
 # Apoie o projeto
 
