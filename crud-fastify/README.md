@@ -8,9 +8,9 @@ Este é o repositório da POC **CRUD com API Fastify**, criado para analisar o u
 
 ## O que é o Projeto ?
 
-A ideia do projeto foi construir **CRUD com o uso de API Rest com o framework Fastify** e com isso validar um pedaço de uma aplicação real. Com isso temos uma Proof of Concept Prova de Conceito (POC). 
+O objetivo do projeto é implementar um **CRUD com o uso de API Rest com o framework Fastify** e com isso validar este tecnológia com uma aplicação do mundo real.
 
-Foram utilizadas as seguintes tecnologias:
+Foram utilizadas as tecnologias:
 * [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 * [Pico CSS](https://picocss.com/) 
 * [Fastify](https://fastify.dev/)
@@ -18,7 +18,7 @@ Foram utilizadas as seguintes tecnologias:
 
 ## Serviços disponíveis (endpoints)
 
-Os endpoints disponibilizados por este pacote são os necessários para a implementação de um CRUD.
+Todos serviços disponibilizados fazem parte de uma operação básica de um CRUD.
 
 A lista de endpoints completa está descrita aqui:
 
@@ -37,27 +37,27 @@ A lista de endpoints completa está descrita aqui:
 
 ### Funcionalidade: Cadastro de usuário 
 
-Funcionalidade: Tela inicial da aplicação (Tabela de usuário sem informação)
+Tela inicial da aplicação (Tabela de usuário sem informação)
 
 ![Tubo de ensaio!](./static/assets/img_01.png "Tubo de ensaio")
 
-Funcionalidade: Listagem de usuário
+Listagem de usuário
 
 ![Tubo de ensaio!](./static/assets/img_02.png "Tubo de ensaio")
 
-Funcionalidade: Consulta de usuário.
+Consulta de usuário.
 
 ![Tubo de ensaio!](./static/assets/img_03.png "Tubo de ensaio")
 
-Funcionalidade: Alteração de usuário.
+Alteração de usuário.
 
 ![Tubo de ensaio!](./static/assets/img_04.png "Tubo de ensaio")
 
-Funcionalidade: Inclusão de usuário.
+Inclusão de usuário.
 
 ![Tubo de ensaio!](./static/assets/img_05.png "Tubo de ensaio")
 
-Funcionalidade: Deleção de usuário
+Deleção de usuário
 
 ![Tubo de ensaio!](./static/assets/img_06.png "Tubo de ensaio")
 
