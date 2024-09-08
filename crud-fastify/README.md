@@ -2,9 +2,9 @@
     <img src="./static/img/tubo-ensaio.png" alt="CRUD com API Fastify" width="128" height="128">
 </figure>
 
-# Tubo de ensaio - CRUD com API Fastify
+# CRUD com API Fastify
 
-Esse é o repositório do **CRUD com API Fastify**, criado para entender como funcionar o uso desta tecnológias.
+Este é o repositório da POC **CRUD com API Fastify**, criado para analisar o uso do Fastify com um CRUD tradicional.
 
 ## O que é o Projeto ?
 
