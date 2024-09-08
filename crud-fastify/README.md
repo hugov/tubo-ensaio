@@ -37,27 +37,27 @@ A lista de endpoints completa está descrita aqui:
 
 ### Funcionalidade: Cadastro de usuário 
 
-Tela inicial da aplicação (Tabela de usuário sem informação)
+**Tela inicial da aplicação** (Tabela de usuário sem informação)
 
 ![Tubo de ensaio!](./static/assets/img_01.png "Tubo de ensaio")
 
-Listagem de usuário
+**Operação de listagem de usuário**
 
 ![Tubo de ensaio!](./static/assets/img_02.png "Tubo de ensaio")
 
-Consulta de usuário.
+**Operação de consulta de usuário**
 
 ![Tubo de ensaio!](./static/assets/img_03.png "Tubo de ensaio")
 
-Alteração de usuário.
+**Operação de alteração de usuário**
 
 ![Tubo de ensaio!](./static/assets/img_04.png "Tubo de ensaio")
 
-Inclusão de usuário.
+**Operação de inclusão de usuário**
 
 ![Tubo de ensaio!](./static/assets/img_05.png "Tubo de ensaio")
 
-Deleção de usuário
+**Operação de exclusão de usuário**
 
 ![Tubo de ensaio!](./static/assets/img_06.png "Tubo de ensaio")
 
