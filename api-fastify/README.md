@@ -10,7 +10,7 @@ Este é o repositório da POC **API Fastify**, criado para analisar o uso do Fas
 
 O objetivo deste projeto é fornecer serviços através da tecnológia API Rest para a geração de cupons de descontos personalizados.
 
-### Requisitos funcionais:
+### Requisitos funcionais
 
 - O sistema deve permitir o cadastro do emissor, ou seja, a entidade autorizada a gerenciar promoções através de cupons de desconto;
 - O sistema deve gerar cupons de desconto dos tipos: fixos e aleatórios;
@@ -19,7 +19,7 @@ O objetivo deste projeto é fornecer serviços através da tecnológia API Rest 
 - O sistema deve permitir criar um cupom promociona pessoal e intransferível;
 - O sistema deve permitir notificar o emissor que o cupom foi utilizado;
 
-### Requisitos não funcionais:
+### Requisitos não funcionais
 
 - O sistema deve limitar a quantidade de requisições para a API de um mesmo solicitante (Rate Limited);
 - O sistema deve registrar as informações do solicitante;

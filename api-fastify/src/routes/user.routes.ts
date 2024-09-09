@@ -2,7 +2,7 @@ import Fastify, { FastifyInstance } from 'fastify';
 import { User } from '../interfaces/user.interface';
 import { UserUseCase } from '../usecases/user.usecase';
 
-export async function userRoutes(fastify, options) {
+async function userRoutes(fastify, options) {
 
     const userUseCase = new UserUseCase();
 
@@ -21,3 +21,5 @@ export async function userRoutes(fastify, options) {
     });
     
 }
+
+export { userRoutes };
