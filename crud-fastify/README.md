@@ -69,7 +69,7 @@ A lista de endpoints completa está descrita aqui:
 * Instalado e configurado o Docker e o Docker Compose `(Docker version 24.0.5, build ced0996)`
 * Node.js 20.11.1
 * NPM 10.8.3
-* PostgreSQL 16.3 (Caso não tenha instalado use o conatiner do Docker)
+* PostgreSQL 16.3 (Será adicionado com container Docker)
 * Extensão do VSCode Live Server
 
 # Instalação
