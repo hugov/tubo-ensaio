@@ -1,0 +1,27 @@
+{
+  "name": "api-fastify",
+  "version": "1.0.0",
+  "description": "<figure>\r     <img src=\"./assets/tubo-ensaio.png\" alt=\"CRUD com API Fastify\" width=\"128\" height=\"128\">\r </figure>",
+  "main": "server.js",
+  "type": "module",
+  "engines": {
+    "node": "20.11.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/server.ts",
+    "start": "node server.js"
+  },
+  "author": "Vitor Hugo Oliveira",
+  "license": "ISC",
+  "keywords": [],
+  "devDependencies": {
+    "prisma": "^5.19.1",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.19.1",
+    "fastify": "^4.28.1"
+  }
+}

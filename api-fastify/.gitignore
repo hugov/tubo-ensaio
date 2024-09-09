@@ -1,2 +1,5 @@
 # Excluido o diretório do node
 node_modules/
+
+# Excluido o arquivo .env
+#.env
