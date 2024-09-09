@@ -1,5 +1,5 @@
 <figure>
-    <img src="./static/img/tubo-ensaio.png" alt="CRUD com API Fastify" width="128" height="128">
+    <img src="./assets/tubo-ensaio.png" alt="CRUD com API Fastify" width="128" height="128">
 </figure>
 
 # API Fastify
