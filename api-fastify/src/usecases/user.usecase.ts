@@ -8,8 +8,7 @@ class UserUseCase {
     }
 
     async create(user: User): Promise<User> {
-        const result = await this.userRepository.create(user);
-        return result;
+        return await this.userRepository.create(user);
     }
 }
 
