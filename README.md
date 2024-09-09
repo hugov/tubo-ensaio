@@ -5,8 +5,8 @@ Este repositório foi criado com o objetivo de divulgar POCs (Provas de conceito
 
 |     #    |   Nome   | Descrição |
 | -------- | ----- | ----------- |
-| 1        | crud-fastify     | Projeto que implementa uma API Rest com o Framework Fastify          |
-|   2       |      |             |
+| 1        | crud-fastify     | Projeto que implementa um CRUD integrado com o uso de uma API Rest com o Framework Fastify          |
+|   2       |   api-fastify   | Projeto que implementa uma API REST com o Framework Fastify , com o objetivo de gerar cupons de desconto            |
 
 # Autor
 
