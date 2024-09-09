@@ -27,6 +27,7 @@ O objetivo deste projeto é fornecer serviços através da tecnológia API Rest 
 
 Foram utilizadas as tecnologias:
 * [Fastify](https://fastify.dev/)
+* [Prisma](https://www.prisma.io/)
 * [PostgreSQL](https://www.postgresql.org/)
 
 ## Serviços disponíveis (endpoints)
