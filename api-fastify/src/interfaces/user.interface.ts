@@ -4,8 +4,8 @@ export interface User {
     email: string
     user_type: number
     document_id: string
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 
 export interface UserRepository {

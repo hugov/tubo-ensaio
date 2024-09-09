@@ -6,9 +6,24 @@
 
 Este é o repositório da POC **API Fastify**, criado para analisar o uso do Fastify na implementação de uma Rest API completa.
 
-## O que é o Projeto ?
+## Objetivo do Projeto
 
-O objetivo do projeto é implementar uma **API Rest com o framework Fastify** e com isso validar esta tecnológia com uma aplicação do mundo real.
+O objetivo deste projeto é fornecer serviços através da tecnológia API Rest para a geração de cupons de descontos personalizados.
+
+### Requisitos funcionais:
+
+- O sistema deve permitir o cadastro do emissor, ou seja, a entidade autorizada a gerenciar promoções através de cupons de desconto;
+- O sistema deve gerar cupons de desconto dos tipos: fixos e aleatórios;
+- O sistema deve permitir restringir o uso do cupom promocionais por limite de uso;
+- O sistema deve permitir restringir o uso co cumpom através de uma da data de vigência;
+- O sistema deve permitir criar um cupom promociona pessoal e intransferível;
+- O sistema deve permitir notificar o emissor que o cupom foi utilizado;
+
+### Requisitos não funcionais:
+
+- O sistema deve limitar a quantidade de requisições para a API de um mesmo solicitante (Rate Limited);
+- O sistema deve registrar as informações do solicitante;
+- O sistema deve impedir ou mitigar os tipos de ataques de DDOS;
 
 Foram utilizadas as tecnologias:
 * [Fastify](https://fastify.dev/)
@@ -25,7 +40,6 @@ Em construção
 * Node.js 20.11.1
 * NPM 10.8.3
 * PostgreSQL 16.3 (Caso não tenha instalado use o conatiner do Docker)
-* Extensão do VSCode Live Server
 
 # Instalação
 
