@@ -4,6 +4,8 @@ import { logoutHandler, getUsersHandler, loginHandler, registerUserHandler } fro
 import { $ref } from "./user.schema";
 
 async function userRoutes(fastify: FastifyInstance) {
+    
+    // Rota de criação de usuário
     fastify.post(
         '/', 
         {
@@ -14,9 +16,31 @@ async function userRoutes(fastify: FastifyInstance) {
                 },
             },
         }, 
-        registerUserHandler,
+        registerUserHandler
     );
 
+    // Rota de listagem do usuário
+    fastify.get(
+        '/',
+        {
+            preHandler: [fastify.authenticate],
+        },
+        getUsersHandler
+    );
+
+    // FIXME: Implementar o consulta de usuário
+    
+    // FIXME: Implementar a verificação de confirmação de cadastro (Check confirmation code)
+
+    // FIXME: Implementar a alteração de usuário (Edit user)
+
+    // FIXME: Implementar a exclusão de usuário (Delete user)
+
+    // FIXME: Implementar o esquecimento de senha (Forgot password)
+
+    // FIXME: Implementar a redefinição de senha (Reset password)
+
+    // Rota de Login de usuário
     fastify.post(
         '/login', 
         {
@@ -30,14 +54,7 @@ async function userRoutes(fastify: FastifyInstance) {
         loginHandler
     );
 
-    fastify.get(
-        '/',
-        {
-            preHandler: [fastify.authenticate],
-        },
-        getUsersHandler
-    );
-
+    // Rota de Logout de usuário
     fastify.delete(
         '/logout',
         {
@@ -45,6 +62,7 @@ async function userRoutes(fastify: FastifyInstance) {
         },
         logoutHandler
     )
+
 }
 
 export default userRoutes;

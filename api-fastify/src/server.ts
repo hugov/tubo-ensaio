@@ -24,6 +24,9 @@ fastify.register(fCookie, {
 fastify.decorate(
     'authenticate',
     async (request: FastifyRequest, reply: FastifyReply) => {
+
+        console.log('authenticate');
+
         const token = request.cookies.access_token;
 
         if (!token) {
