@@ -2,7 +2,7 @@
   "name": "api-fastify",
   "version": "1.0.0",
   "description": "<figure>\r     <img src=\"./assets/tubo-ensaio.png\" alt=\"CRUD com API Fastify\" width=\"128\" height=\"128\">\r </figure>",
-  "main": "server.js",
+  "main": "app.js",
   "type": "module",
   "engines": {
     "node": "20.11.1"
@@ -22,8 +22,13 @@
     "typescript": "^5.6.2"
   },
   "dependencies": {
+    "@fastify/cookie": "^9.4.0",
+    "@fastify/jwt": "^8.0.1",
     "@prisma/client": "^5.19.1",
     "fastify": "^4.28.1",
-    "fastify-plugin": "^4.5.1"
+    "fastify-plugin": "^4.5.1",
+    "fastify-zod": "^1.4.0",
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.23.3"
   }
 }

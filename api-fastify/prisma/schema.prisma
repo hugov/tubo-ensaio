@@ -17,6 +17,8 @@ model User {
   id          String   @id @default(uuid())
   name        String
   email       String   @unique
+  password    String
+  salt        String
   user_type   Int
   document_id String
   created_at  DateTime @default(now())
